@@ -4,6 +4,7 @@ MATLAB interface to Warren Wiscombe's MIEV0 Fortran program
 pics
 
 ## About
+and why
 
 ## Usage
 **Setup**:
