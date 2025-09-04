@@ -11,7 +11,7 @@ also for research and education purposes!
 ## Usage
 **Setup**:
 
-Available as binary .mex files on:
+Available as binary MEX files on:
 1. Windows (x64 Intel and AMD), MATLAB R2011a and subsequent releases. Download mlMIEV0.mexw64 from the Releases section.
 2. ~~Linux (x64 Intel and AMD), MATLAB R2017a and subsequent releases. Download mlMIEV0.mexa64 from the Releases section.~~
 3. ~~MATLAB Online. Download mlMIEV0.mexa64 from the Releases section and upload into MATLAB Drive to use.~~
