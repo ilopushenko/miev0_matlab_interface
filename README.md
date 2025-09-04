@@ -6,6 +6,8 @@ pics
 ## About
 and why
 
+also for research and education purposes!
+
 ## Usage
 **Setup**:
 
