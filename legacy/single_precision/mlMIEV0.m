@@ -1,15 +1,13 @@
 % mlMIEV0.m Help file for mlMIEV0 MEX-file.
 %  mlMIEV0.f - source file
 % 
-%  EXAMPLE OFFTOP: Multiplies an input scalar (multiplier) 
-%  times a 1xN matrix (inMatrix)
-%  and outputs a 1xN matrix (outMatrix)
+%  Call syntax:  
+%  [Qext, Qsca, Gqsc, S1, S2, ...
+%   Sforw, Sback, Tforw, Tback, Spike, PMOM] = ...
+%       mlMIEV0(XX, CREFIN, PERFCT, MIMCUT, ANYANG, 
+%               NUMANG, XMU, NMOM, IPOLZN, MOMDIM, PRNT, verboseFlag)
+%
+%  See example call implementation in run_MVTstNew.m
 % 
-%  The calling syntax is:
-% 
-% 		outMatrix = arrayProduct(multiplier, inMatrix)
-% 
-
-%  This is a MEX-file for MATLAB.
-%  Copyright 2007-2014 The MathWorks, Inc.
-% 
+%  See all details on the input and output variables in:
+%  <repo>/wiscombe/MIEV.doc, or in MIEV0.f source code.
