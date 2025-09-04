@@ -29,6 +29,9 @@ c     ..
 c                                 ** Example symbolic dump call for Cray
 ccccc    CALL SYMDUMP( '-B -c3' )
 
+c                        ** Added by I.V.L.: MATLAB-compatible error msg
+         call mexEvalStringWithTrap('disp("****** ERROR *****")') 
+         call mexErrMsgTxt(MESSAG)
          STOP
 
       END IF
@@ -41,6 +44,10 @@ ccccc    CALL SYMDUMP( '-B -c3' )
       IF( NUMMSG.LE.MAXMSG ) THEN
 
          WRITE( *, '(/,2A,/)' ) ' ****** WARNING *****  ', MESSAG
+         
+c                       ** Added by I.V.L.: MATLAB-compatible warning msg
+         call mexEvalStringWithTrap('disp("****** WARNING *****")') 
+         call mexErrMsgTxt(MESSAG)
 
       ELSE
 
