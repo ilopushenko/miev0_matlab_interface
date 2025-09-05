@@ -46,7 +46,7 @@ This list suggests that you have to be in posession of all of these classic comp
 
 Potentially, similar approach should work with any MATLAB up to R2017b  and corresponding [supported compilers](https://www.mathworks.com/support/requirements/previous-releases.html) (also on x86 platform), as interleaved MEX API became a standard in R2018a, and Intel introduced its new Fortran compiler ifx (as a replacement to ifort) only in recent oneAPI releases. 
 
-**Linux build instructions**:
+**Linux build instructions (legacy)**:
 
 Here, we can go into more details, as everything except MATLAB is usually available from Linux repos.
 
