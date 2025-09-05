@@ -51,6 +51,11 @@ Potentially, similar approach should work with any MATLAB up to R2017b  and corr
 Here, we can go into more details, as everything except MATLAB is usually available from Linux repos.
 
 ## Remarks
+You are very welcome to use this library for education purposes, as well as for producing validation results for research papers.
+
+If you use this code, please reference the original W. Wiscombe Appl. Opt. 1980 paper.
+
+If applicable, I would also be very grateful if you recognize my efforts on making this MEX interface also by mentioning it somewhere in the acknowledgements. 
 
 ## References
 
