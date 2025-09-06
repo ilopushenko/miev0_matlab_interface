@@ -40,7 +40,7 @@ At the moment, library is available as binary MEX file on **Windows** platform (
 [Qext, Qsca, Gqsc, S1, S2, Sforw, Sback, Tforw, Tback, Spike, PMOM] = ...
 mlMIEV0(XX, Crefin, Perfct, Mimcut, Anyang, Numang, Xmu, Nmom, Ipolzn, Momdim, Prnt, Verbose);
 ```
-Argument list fully corresponds to the original MIEV0 parameter list, so you are welcome to refer to the original documentation available e.g. in <repo>/wiscombe/MIEV.pdf. 
+Argument list fully corresponds to the original MIEV0 parameter list, so you are welcome to refer to the original documentation available e.g. in <repo>/wiscombe/MIEV.pdf. One exception is the last "Verbose" argument which enables some additional output from the MATLAB-Fortran MEX interface.
 
 An example file for computing and plotting scattering intensities $S_1$ and $S_2$ is available in the repo root folder (see example_scattered_intensities.m).
 
