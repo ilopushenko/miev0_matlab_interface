@@ -1,7 +1,7 @@
 # MIEV0 MATLAB interface (MEX API)
 MATLAB interface to Dr. Warren Wiscombe's MIEV0 Fortran program.
 
-Original MIEV0 program is widely known to be one of the most well-tested codes for calculating eletromagnetic scattering from a homogeneous sphere. Current repo aims at providing modern interface to this high performance and a de-facto reference Mie theory implementation, so that one could easily call it from MATLAB environment - either for research, or for education purposes.
+Original MIEV0 program is widely known to be one of the most well-tested codes for calculating eletromagnetic scattering from a homogeneous sphere. Current repo aims at providing modern interface to this highly efficient and a de-facto reference Mie theory implementation, so that one could easily call it from MATLAB environment - either for research, or for education purposes.
 
 ## Features
 All capabililies of the original MIEV0 program are retained. The following quantities are computed:
