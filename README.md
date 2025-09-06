@@ -26,7 +26,7 @@ Very thorough description can be found in NCAR reports (<repo>/wiscombe/NCARMieR
 I have made minor modifications to MIEV0.f and ErrPack.f source code files, mainly to enable support of double precision arithmetic and to ensure that MIEV0 error messages are properly displayed in MATLAB command window instead of crashing the whole thing. These changes are mainly reflected in changing data types from REAL and COMPLEX to REAL*8 and COMPLEX*16, correspondingly. Perhaps there was a more elegant way to do it, e.g. by using certaing ifort compiler flags, but somehow attempting to do so in the MATLAB Command window has not been successful. As of now, even line numbering in MIEV0.f is completely the same as in the original file. Original files are kept for reference in the <repo>/wiscombe folder.
 
 This interface has been intentionally implemented with a bit outdated non-interleaved MATLAB MEX API in order to ensure compatibility with older MATLAB releases.
-Currently, calls to the mlMIEV0.mexw64 library are supported in all Windows MATLAB releases beginning with R2011a without imposing requirements for any additional software.
+Consequently, calls to the mlMIEV0.mexw64 library are supported in all Windows MATLAB releases beginning with R2011a without imposing requirements for any additional software.
 
 
 ## Usage
