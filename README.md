@@ -49,6 +49,8 @@ Overall, the main version of library with double precision performs very well an
 - Not all messages of the original code, including those governed by the PRNT input flag, are currently displayed in the MATLAB Command window.
 - For two extreme test cases Tback and Tforw parameters differ from pre-computed values more than all other parameters in average. Yet, the difference is not that large and appears to be within the acceptable range.
 
+You are very welcome to report any issues if you encounter any. 
+
 ## Build
 Ideally, one should be able to build the library with any MATLAB edition, as soon as you also have [supported compiler(s)](https://www.mathworks.com/support/requirements/previous-releases.html) installed in your system. The command ```mex mlMIEV0.F90 MIEV0.f ErrPack.f``` launched from MATLAB Command window should then do the job.
 
