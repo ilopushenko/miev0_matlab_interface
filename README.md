@@ -85,7 +85,7 @@ You are very welcome to use this library for education purposes, as well as for 
 
 As I do not possess any rights to the original MIEV0 code and just make use of the fact that it had been freely available for years from Dr. Wiscombe's anonymous NASA FTP at climate.gsfc.nasa.gov in the public folder (as well as a code listing in the '79 NCAR report referred below), in this repo MIT license only applies to the MEX interface and MATLAB files which were completely written by myself.
 
-If you use this code, please make a reference to the original **W. Wiscombe Appl. Opt. 1980 paper**. Also I would be very happy if you recognize my efforts on implementing this MEX interface by mentioning it somewhere in the acknowledgements, or by referring to any applicable repository (this GitHub, Zenodo, or MATLAB File Exchange). 
+If you use this code, please make a reference to the original **W. Wiscombe Appl. Opt. 1980 paper**. Also I would be very happy if you recognize my efforts on implementing this MEX interface by mentioning it somewhere in the acknowledgements, or by referring to any applicable repository (this GitHub, [Zenodo](https://zenodo.org/records/17069742), or MATLAB File Exchange). 
 
 ## References
 1. Wiscombe, W. ["Mie Scattering Calculations - Advances in Technique And Fast, Vector-Speed Computer Codes,"](https://www.researchgate.net/publication/253485579_Mie_Scattering_Calculations_Advances_in_Technique_and_Fast_Vector-speed_Computer_Codes) Ncar Tech Note TN-140+STR, National Center For Atmospheric Research, Boulder, Colorado (1979).
