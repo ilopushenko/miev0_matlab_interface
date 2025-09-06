@@ -72,3 +72,5 @@ legend('$I_\perp=|S_1|^2$','$I_{||}=|S_2|^2$','Interpreter','LaTeX')
 hold off;
 axis equal;
 set(gca,'fontsize', 14);
+title('Scattering intensity for size parameter 20, refractive index 1.33','FontSize',11);
+set(gca,'TitleHorizontalAlignment','left');

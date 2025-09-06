@@ -44,7 +44,7 @@ Argument list fully corresponds to the original MIEV0 parameter list, so you are
 
 An example file for computing and plotting scattering intensities $S_1$ and $S_2$ is available in the repo root folder (see **example_scattered_intensities.m**). Result of this script should provide you with the following plot:
 
-PICTURE
+![result of the example script](./example_scattered_intensities.svg)
 
 ## Validation
 
