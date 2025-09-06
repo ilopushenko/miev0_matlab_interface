@@ -26,27 +26,23 @@ Very thorough description can be found in NCAR reports (\<repo\>/wiscombe/NCARMi
 I have made minor modifications to MIEV0.f and ErrPack.f source code files, mainly to enable support of double precision arithmetic and to ensure that MIEV0 error messages are properly displayed in MATLAB command window instead of crashing the whole thing. These changes are mainly reflected in changing data types from REAL and COMPLEX to REAL\*8 and COMPLEX\*16, correspondingly. Perhaps there was a more elegant way to do it, e.g. by using certaing ifort compiler flags, but somehow attempting to do so in the MATLAB Command window has not been successful. As of now, even line numbering in MIEV0.f is completely the same as in the original file. Original files are kept for reference in the \<repo\>/wiscombe/ folder. In addition, interface binaries based on the unmodified MIEV0.f are available in the \<repo\>/legacy/ folder, built with the default single precision arithmetic. 
 
 This interface has been intentionally implemented with a bit outdated non-interleaved MATLAB MEX API in order to ensure compatibility with older MATLAB releases.
-Consequently, calls to the mlMIEV0.mexw64 library are supported in all Windows MATLAB releases beginning with R2011a without imposing requirements for any additional software.
+Consequently, calls to the mlMIEV0.mexw64 library are supported in all Windows MATLAB releases beginning with R2011a without imposing requirements for any additional software. 
+
+Potentially, MEX library can also be compiled from the sources on other platforms (see general instructions below). Currently, I consider building binary files for Linux and Apple Silicon platrorms. Octave port might also be considered at a later time.
 
 
 ## Usage
-**Setup**:
+At the moment, library is available as binary MEX file on Windows platform (x64 Intel and AMD), MATLAB R2011a and subsequent releases. 
 
-Available as binary MEX files on:
-1. Windows (x64 Intel and AMD), MATLAB R2011a and subsequent releases. Download mlMIEV0.mexw64 from the Releases section.
-2. ~~Linux (x64 Intel and AMD), MATLAB R2017a and subsequent releases. Download mlMIEV0.mexa64 from the Releases section.~~
-3. ~~MATLAB Online. Download mlMIEV0.mexa64 from the Releases section and upload into MATLAB Drive to use.~~
-4. ~~MacOS (Apple Silicon), MATLAB R2023a and subsequent releases. Download mlMIEV0.mexmaca64 from the Releases section.~~
+1. Download mlMIEV0.mexw64 from the Releases section and put it into your project folder.
+2. Call mlMIEV0 as you would call any MATLAB function with appropriate input and output argument list:
+```
+[Qext, Qsca, Gqsc, S1, S2, Sforw, Sback, Tforw, Tback, Spike, PMOM] = ...
+mlMIEV0(XX, Crefin, Perfct, Mimcut, Anyang, Numang, Xmu, Nmom, Ipolzn, Momdim, Prnt, Verbose);
+```
+Argument list fully corresponds to the original MIEV0 parameter list, so you are welcome to refer to the original documentation available e.g. in <repo>/wiscombe/MIEV.pdf. 
 
-Potentially, MEX library can also be compiled from the sources on other platforms (see details below). Octave port might be considered at a later time.
-
-**Input variables**:
-
-**Output variables**:
-
-**Examples**:
-
-**Manual**:
+An example file for computing and plotting scattering intensities $S_1$ and $S_2$ is available in the repo root folder (see example_scattered_intensities.m).
 
 ## Validation
 
