@@ -50,12 +50,12 @@ An example file for computing and plotting scattering intensities $S_1$ and $S_2
 
 ## Known issues
 - Not all messages of the original code, including those governed by the PRNT input flag, are currently displayed in the MATLAB Command window.
-- For two extreme test cases Tback and Tforw parameters differ from pre-computed values more than all other parameters in average. Yet, the difference is not that large and appears to be within acceptable range.
+- For two extreme test cases Tback and Tforw parameters differ from pre-computed values more than all other parameters in average. Yet, the difference is not that large and appears to be within the acceptable range.
 
 ## Build
 Ideally, one should be able to build the library with any MATLAB edition, as soon as you also have [supported compiler(s)](https://www.mathworks.com/support/requirements/previous-releases.html) installed in your system. The command "mex mlMIEV0.F90 MIEV0.f ErrPack.f" launched from MATLAB Command window should then do the job.
 
-In practice, current version faces some build-related difficulties in recent MATLAB editions as it is implemented with non-interleaved MATLAB MEX API. As a matter of fact, this causes some problems with copying arrays into Fortran-allocated memory after compiling with modern Visual Studio, Intel OneAPI / Parallel Studio XE and MATLAB R2018a+ editions. For this reason, currently MEX file has to be built with older frameworks. As already mentioned, advantage of this approach is compatibility of the produced MEX file with any subsequent MATLAB release (at least, Mathworks still maintain this binary support). So, below the build procedure is discussed on the example of MATLAB R2011a, as this appeared to be the earliest version for which author had compatible compilers. 
+In practice, current version faces some build-related difficulties in recent MATLAB editions as it is implemented with non-interleaved MATLAB MEX API. As a matter of fact, this causes some problems with copying arrays into Fortran-allocated memory after compiling with modern Visual Studio, Intel OneAPI / Parallel Studio XE and MATLAB R2018a+ editions. For this reason, currently MEX file has to be built with older frameworks. As already mentioned, advantage of this approach is compatibility of the produced MEX file with any subsequent MATLAB release (at least, Mathworks still maintain proper binary support). So, below the build procedure is discussed on the example of MATLAB R2011a, as this appeared to be the earliest version for which I already had compatible compilers. 
 
 _I am considering the interface update for the interleaved MATLAB MEX API in order to perform proper build with up-to-date tools. However, current non-interleaved version will remain a priority one for compatibility purposes._
 
@@ -73,7 +73,7 @@ Potentially, similar approach should work with any MATLAB up to R2017b and corre
 
 **Linux build directions**:
 
-On linux, MATLAB supports GNU gfortran compiler. As original MIEV0 code is performed within Fortran77 standard, it requires explicit compiler flag to be passed to gfortran in order for the build to succeed:
+On linux, MATLAB supports GNU gfortran compiler. As original MIEV0 code is implemented within Fortran77 standard, it requires explicit compiler flag to be passed to gfortran in order for the build to succeed:
 ```
 mex FFLAGS='$FFLAGS -ffixed-form' mlMIEV0.F90 MIEV0.f ErrPack.f
 ```
@@ -82,11 +82,9 @@ I have been able to get this command working and to produce a mlMIEV0.mexa64 bin
 ## Remarks
 You are very welcome to use this library for education purposes, as well as for producing validation results for research papers.
 
-As I do not possess any rights to the original MIEV0 code and just make use of the fact that it had been freely available for years from Dr. Wiscombe's anonymous NASA FTP at climate.gsfc.nasa.gov in the public folder (as well as a printout in the '79 NCAR report referred below), in this repo MIT license only applies to the MEX interface and MATLAB files which were completely written by myself.
+As I do not possess any rights to the original MIEV0 code and just make use of the fact that it had been freely available for years from Dr. Wiscombe's anonymous NASA FTP at climate.gsfc.nasa.gov in the public folder (as well as a code listing in the '79 NCAR report referred below), in this repo MIT license only applies to the MEX interface and MATLAB files which were completely written by myself.
 
-If you use this code, please make a reference to the original W. Wiscombe Appl. Opt. 1980 paper.
-
-I would be very happy if you recognize my efforts on making this MEX interface by mentioning it somewhere in the acknowledgements, or by referring to any applicable repository (this GitHub, Zenodo, or MATLAB File Exchange). 
+If you use this code, please make a reference to the original **W. Wiscombe Appl. Opt. 1980 paper**. Also I would be very happy if you recognize my efforts on implementing this MEX interface by mentioning it somewhere in the acknowledgements, or by referring to any applicable repository (this GitHub, Zenodo, or MATLAB File Exchange). 
 
 ## References
 1. Wiscombe, W. "Mie Scattering Calculations - Advances in Technique And Fast, Vector-Speed Computer Codes," Ncar Tech Note TN-140+STR, National Center For Atmospheric Research, Boulder, Colorado (1979).
