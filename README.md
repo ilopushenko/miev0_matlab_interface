@@ -20,7 +20,7 @@ All capabililies of the original MIEV0 program are retained. The following quant
 - coefficients in the Legendre polynomial expansions of either the unpolarized phase function or the polarized phase matrix (PMOM);
 - and some other quantities related to polarized radiative transfer and resonance hitting.
 
-More details on input parameters and output quantities are available in the original manual file authored by W. Wiscombe (```/wiscombe/MIEV.doc``` or converted version ```/wiscombe/MIEV.pdf```), as well as in comments within source code MIEV0.f.
+More details on input parameters and output quantities are available in the original manual file authored by W. Wiscombe (```/wiscombe/MIEV.doc``` or converted version ```/wiscombe/MIEV.pdf```), as well as in comments within source code ```MIEV0.f```.
 Very thorough description can be found in NCAR reports (```/wiscombe/NCARMieReport_Jun79.pdf``` and ```/wiscombe/NCARMieReport_Aug96.pdf```). One is also urged to refer to the original papers enumerated below.
 
 I have made minor modifications to ```MIEV0.f``` and ```ErrPack.f``` source code files, mainly to enable support of double precision arithmetic and to ensure that MIEV0 error messages are properly displayed in MATLAB command window instead of crashing the whole thing. These changes are mainly reflected in changing data types from REAL and COMPLEX to REAL\*8 and COMPLEX\*16, correspondingly. Perhaps there was a more elegant way to do it, e.g. by using certain ifort compiler flags, but somehow attempting to do so in the MATLAB Command window has not been successful. As of now, even line numbering in MIEV0.f is completely the same as in the original file. Original files are kept for reference in the ```/wiscombe/``` folder. In addition, interface binaries based on the unmodified MIEV0.f are available in the ```/legacy/``` folder, built with the default single precision arithmetic. 
@@ -47,6 +47,11 @@ An example file for computing and plotting scattering intensities $S_1$ and $S_2
 ![result of the example script](./example_scattered_intensities.svg)
 
 ## Validation
+The implemented ```mlMIEV0.mexw64``` has mostly successfully undergone testing procedures outlined in the original ```/wiscombe/MVTstNew.f``` file. This subroutine features an exhaustive set of 19 test cases including extremely large size parameters, and covers most parts of the original MIEV0 program. To perform testing, pre-computed data contained within ```/wiscombe/MVTstNew.f``` was serialized into ```MVTstNew.mat``` file, and test script ```run_MVTstNew.m``` was written to compare the output from mlMIEV0.mexw64 with the reference quantities. One can confirm the good quality of the produced results by launching this script. Some small issues might remain: so far I have observed only one issue which is listed in the appropriate section below.
+
+Additionally, the same test script was used to compare the results yielded by single precision version of the library (see ```/legacy/single_precision/run_MVTstNew.m```), which apparently fails to pass the extreme testing scenarios. 
+
+Overall, the main version of library with double precision performs very well and is suitable for scientific applications.  
 
 ## Known issues
 - Not all messages of the original code, including those governed by the PRNT input flag, are currently displayed in the MATLAB Command window.
