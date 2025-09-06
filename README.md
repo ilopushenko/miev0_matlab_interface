@@ -62,4 +62,8 @@ If you use this code, please make a reference to the original W. Wiscombe Appl. 
 I would be very happy if you recognize my efforts on making this MEX interface by mentioning it somewhere in the acknowledgements, or by referring to any applicable repository (this GitHub, Zenodo, or MATLAB File Exchange). 
 
 ## References
+1. Wiscombe, W. "Mie Scattering Calculations - Advances in Technique And Fast, Vector-Speed Computer Codes," Ncar Tech Note TN-140+STR, National Center For Atmospheric Research, Boulder, Colorado (1979).
+2. Wiscombe, W. "Improved Mie scattering algorithms," Appl. Opt. 19, 1505-1509 (1980). 
+3. Van De Hulst. "Light Scattering by Small Particles," Dover Press, New York (1957, 1982).
+4. Bohren, C. and D. Huffman. "Absorption and Scattering of Light by Small Particles," Wiley, New York (1983).
 
