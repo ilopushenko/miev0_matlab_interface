@@ -47,7 +47,7 @@ An example file for computing and plotting scattering intensities $S_1$ and $S_2
 ## Validation
 
 ## Known issues
-- Not all messages of the original code are currently displayed in the MATLAB Command window.
+- Not all messages of the original code, including those governed by the PRNT input flag, are currently displayed in the MATLAB Command window.
 - For two extreme test cases Tback and Tforw parameters differ from pre-computed values more than all other parameters in average. Yet, the difference is not that large and appears to be within acceptable range.
 
 ## Build
