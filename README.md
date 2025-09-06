@@ -19,6 +19,7 @@ All capabililies of the original MIEV0 program are retained. The following quant
 - scattering amplitudes vs. scattering angle for incident polarization perpendicular $S_1$ and parallel $S_2$ to the plane of scattering;
 - coefficients in the Legendre polynomial expansions of either the unpolarized phase function or the polarized phase matrix (PMOM);
 - and some other quantities related to polarized radiative transfer and resonance hitting.
+
 More details on input parameters and output quantities are available in the original manual file authored by W. Wiscombe (<repo>/wiscombe/MIEV.doc and MIEV.pdf), as well as in comments within source code MIEV0.f.
 Very thorough description can be found in NCAR reports (<repo>/wiscombe/NCARMieReport_Jun79.pdf and NCARMieReport_Aug96.pdf).
 
