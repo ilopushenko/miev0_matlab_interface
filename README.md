@@ -55,9 +55,11 @@ Here, we can go into more details, as everything except MATLAB is usually availa
 ## Remarks
 You are very welcome to use this library for education purposes, as well as for producing validation results for research papers.
 
-If you use this code, please reference the original W. Wiscombe Appl. Opt. 1980 paper.
+As I do not possess any rights to the original MIEV0 code and just make use of the fact that it has been freely available for years from Dr. Wiscombe's FTP at NASA (as well as a printout in the '79 NCAR report), in this repo MIT license only applies to the MEX interface and MATLAB files which were completely written by myself.
 
-If applicable, I would also be very grateful if you recognize my efforts on making this MEX interface also by mentioning it somewhere in the acknowledgements. 
+If you use this code, please make a reference to the original W. Wiscombe Appl. Opt. 1980 paper.
+
+I would be very happy if you recognize my efforts on making this MEX interface by mentioning it somewhere in the acknowledgements, or by referring to any applicable repository (this GitHub, Zenodo, or MATLAB File Exchange). 
 
 ## References
 
