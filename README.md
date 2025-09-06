@@ -74,7 +74,7 @@ This list suggests that you have to be in posession of all of these classic comp
  
 ```mex mlMIEV0.F90 MIEV0.f ErrPack.f```
 
-command results in a binary file ```mlMIEV0.mexw64``` (in case of the x64 platform).
+in MATLAB Command window results in a binary file ```mlMIEV0.mexw64``` (in case of the x64 platform).
 
 Potentially, similar approach should work with any MATLAB up to R2017b and corresponding supported compilers (also on the x86 platform), as interleaved MEX API became a standard in R2018a, and Intel introduced its new Fortran compiler ifx (as a replacement to ifort) only in recent oneAPI releases. 
 
