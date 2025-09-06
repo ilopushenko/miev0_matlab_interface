@@ -31,7 +31,7 @@ Potentially, MEX library can also be compiled from the sources on other platform
 
 ## Known issues
 - Not all messages of the original code are currently displayed in the MATLAB Command window.
-- For two extreme test cases Tback and Tforw parameters differ from pre-computed values more than all other parameters in average. Yet, the difference is not that large.
+- For two extreme test cases Tback and Tforw parameters differ from pre-computed values more than all other parameters in average. Yet, the difference is not that large and appears to be within acceptable range.
 
 ## Build
 Ideally, one should be able to build the library with any MATLAB edition, as soon as you also have [supported compiler(s)](https://www.mathworks.com/support/requirements/previous-releases.html) installed in your system. The command "mex mlMIEV0.F90 MIEV0.f ErrPack.f" launched from MATLAB Command window should then do the job.
