@@ -55,7 +55,7 @@ Here, we can go into more details, as everything except MATLAB is usually availa
 ## Remarks
 You are very welcome to use this library for education purposes, as well as for producing validation results for research papers.
 
-As I do not possess any rights to the original MIEV0 code and just make use of the fact that it has been freely available for years from Dr. Wiscombe's anonymous NASA FTP climate.gsfc.nasa.gov in the public folder (as well as a printout in the '79 NCAR report referred below), in this repo MIT license only applies to the MEX interface and MATLAB files which were completely written by myself.
+As I do not possess any rights to the original MIEV0 code and just make use of the fact that it has been freely available for years from Dr. Wiscombe's anonymous NASA FTP at climate.gsfc.nasa.gov in the public folder (as well as a printout in the '79 NCAR report referred below), in this repo MIT license only applies to the MEX interface and MATLAB files which were completely written by myself.
 
 If you use this code, please make a reference to the original W. Wiscombe Appl. Opt. 1980 paper.
 
