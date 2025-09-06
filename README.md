@@ -65,5 +65,5 @@ I would be very happy if you recognize my efforts on making this MEX interface b
 1. Wiscombe, W. "Mie Scattering Calculations - Advances in Technique And Fast, Vector-Speed Computer Codes," Ncar Tech Note TN-140+STR, National Center For Atmospheric Research, Boulder, Colorado (1979).
 2. Wiscombe, W. "Improved Mie scattering algorithms," Appl. Opt. 19, 1505-1509 (1980). 
 3. Van De Hulst. "Light Scattering by Small Particles," Dover Press, New York (1957, 1982).
-4. Bohren, C. and D. Huffman. "Absorption and Scattering of Light by Small Particles," Wiley, New York (1983).
+4. Bohren, C. and Huffman, D. "Absorption and Scattering of Light by Small Particles," Wiley, New York (1983).
 
