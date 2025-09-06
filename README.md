@@ -55,7 +55,7 @@ Ideally, one should be able to build the library with any MATLAB edition, as soo
 
 In practice, current version faces some build-related difficulties in recent MATLAB editions as it is implemented with non-interleaved MATLAB MEX API. As a matter of fact, this causes some problems with copying arrays into Fortran-allocated memory after compiling with modern Visual Studio, Intel OneAPI / Parallel Studio XE and MATLAB R2018a+ editions. For this reason, currently MEX file has to be built with older frameworks. A clear advantage of this approach is compatibility of the produced MEX file with any subsequent MATLAB release (at least, for now). So, below the build procedure is discussed on the example of MATLAB R2011a, as this appeared to be the earliest version for which author had compatible compilers. 
 
-_The interface will be later updated for the interleaved MATLAB MEX API in order to perform build with up-to-date tools. However, current non-interleaved version will also be preserved for compatibility purposes._
+_I am considering the interface update for the interleaved MATLAB MEX API in order to perform proper build with up-to-date tools. However, current non-interleaved version will remain a priority one for compatibility purposes._
 
 **Windows build instructions (legacy)**:
 
