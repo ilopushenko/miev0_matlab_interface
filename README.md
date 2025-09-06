@@ -88,8 +88,8 @@ As I do not possess any rights to the original MIEV0 code and just make use of t
 If you use this code, please make a reference to the original **W. Wiscombe Appl. Opt. 1980 paper**. Also I would be very happy if you recognize my efforts on implementing this MEX interface by mentioning it somewhere in the acknowledgements, or by referring to any applicable repository (this GitHub, Zenodo, or MATLAB File Exchange). 
 
 ## References
-1. Wiscombe, W. "Mie Scattering Calculations - Advances in Technique And Fast, Vector-Speed Computer Codes," Ncar Tech Note TN-140+STR, National Center For Atmospheric Research, Boulder, Colorado (1979).
-2. Wiscombe, W. "Improved Mie scattering algorithms," Appl. Opt. 19, 1505-1509 (1980). 
+1. Wiscombe, W. ["Mie Scattering Calculations - Advances in Technique And Fast, Vector-Speed Computer Codes,"](https://www.researchgate.net/publication/253485579_Mie_Scattering_Calculations_Advances_in_Technique_and_Fast_Vector-speed_Computer_Codes) Ncar Tech Note TN-140+STR, National Center For Atmospheric Research, Boulder, Colorado (1979).
+2. Wiscombe, W. ["Improved Mie scattering algorithms,"](https://doi.org/10.1364/AO.19.001505) Appl. Opt. 19, 1505-1509 (1980). 
 3. Van De Hulst. "Light Scattering by Small Particles," Dover Press, New York (1957, 1982).
 4. Bohren, C. and Huffman, D. "Absorption and Scattering of Light by Small Particles," Wiley, New York (1983).
 
