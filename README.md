@@ -32,7 +32,7 @@ Potentially, MEX library can also be compiled from the sources on other platform
 
 
 ## Usage
-At the moment, library is available as binary MEX file on Windows platform (x64 Intel and AMD), MATLAB R2011a and subsequent releases. 
+At the moment, library is available as binary MEX file on **Windows** platform (x64 Intel and AMD), **MATLAB R2011a** and subsequent releases. 
 
 1. Download mlMIEV0.mexw64 from the Releases section and put it into your project folder.
 2. Call mlMIEV0 as you would call any MATLAB function with appropriate input and output argument list:
