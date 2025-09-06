@@ -21,7 +21,7 @@ All capabililies of the original MIEV0 program are retained. The following quant
 - and some other quantities related to polarized radiative transfer and resonance hitting.
 
 More details on input parameters and output quantities are available in the original manual file authored by W. Wiscombe (<repo>/wiscombe/MIEV.doc and MIEV.pdf), as well as in comments within source code MIEV0.f.
-Very thorough description can be found in NCAR reports (<repo>/wiscombe/NCARMieReport_Jun79.pdf and NCARMieReport_Aug96.pdf).
+Very thorough description can be found in NCAR reports (<repo>/wiscombe/NCARMieReport_Jun79.pdf and NCARMieReport_Aug96.pdf). One is also urged to refer to the original papers enumerated below.
 
 I have made minor modifications to MIEV0.f and ErrPack.f source code files, mainly to enable support of double precision arithmetic and to ensure that MIEV0 error messages are properly displayed in MATLAB command window instead of crashing the whole thing. These changes are mainly reflected in changing data types from REAL and COMPLEX to REAL\*8 and COMPLEX\*16, correspondingly. Perhaps there was a more elegant way to do it, e.g. by using certaing ifort compiler flags, but somehow attempting to do so in the MATLAB Command window has not been successful. As of now, even line numbering in MIEV0.f is completely the same as in the original file. Original files are kept for reference in the <repo>/wiscombe folder.
 
