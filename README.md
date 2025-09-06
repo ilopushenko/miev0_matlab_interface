@@ -1,5 +1,5 @@
 # MIEV0 MATLAB interface (MEX API)
-MATLAB interface to Warren Wiscombe's MIEV0 Fortran program
+MATLAB interface to Dr. Warren Wiscombe's MIEV0 Fortran program
 
 pics
 
