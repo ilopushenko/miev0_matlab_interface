@@ -71,7 +71,7 @@ c                         ( CHARACTER, any length )
 
 c     .. Scalar Arguments ..
 
-      CHARACTER VarNam*(*)
+      CHARACTER VarNam*(*), MSGMLAB*2000
 c     ..
 c     .. Local Scalars ..
 
@@ -109,7 +109,7 @@ c                        increased (at least)
 
 c     .. Scalar Arguments ..
 
-      CHARACTER DimNam*(*)
+      CHARACTER DimNam*(*), MSGMLAB*2000
       INTEGER   Minval
 c     ..
 
@@ -127,7 +127,7 @@ c       percent error from the correct value;  return  'FALSE'.
 
 c     .. Scalar Arguments ..
 
-      CHARACTER VarNam*(*)
+      CHARACTER VarNam*(*), MSGMLAB*2000
       REAL      RelErr
 c     ..
 
