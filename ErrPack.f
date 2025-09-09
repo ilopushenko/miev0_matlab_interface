@@ -135,5 +135,6 @@ c     ..
       WRITE(MSGMLAB,'(/,3A,1P,E11.2,A)' ) ' *** Output variable ',
      &                             VarNam, ' differed by ', 100.*RelErr,
      &                ' percent from correct value.  Self-test failed.'
+	  call mexPrintf(MSGMLAB)
       RETURN
       END
