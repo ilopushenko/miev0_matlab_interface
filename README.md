@@ -25,7 +25,7 @@ Consequently, calls to the ```mlMIEV0.mexw64``` library are supported in all Win
 Potentially, MEX library can also be compiled from the sources on other platforms (see general instructions below). Currently, I consider building binary files for Linux and Apple Silicon platrorms. Octave port might also be considered at a later time.
 
 
-## Usage
+## Availability
 At the moment, library is available as binary MEX file for several platforms. 
 
 1. **Windows**. For Windows platform, two releases are available:
@@ -33,13 +33,15 @@ At the moment, library is available as binary MEX file for several platforms.
    * (Current) Version 1.2. Built with interleaved MATLAB MEX API. Supports **MATLAB R2022a** and all subsequent releases. Binary file: `mlMIEV0.mexw64` (x64 only).
 Both releases are identical in terms of the produced results, so it is up to you to decide which version to use. If you have older MATLAB, go on with the legacy version, if you have newer MATLAB - I would advice to use the current version.  
 > [!IMPORTANT]
-> There are some differences in the definition of input integer parameters between these two versions. Please, pay attention to the end of this section.
+> There are some differences in the definition of input integer parameters between these two versions. Please, pay attention to the end of next section.
    
 2. **Linux**. Current version 1.2, built with interleaved API. Supports **MATLAB R2023b** and all subsequent releases. Binary file: `mlMIEV0.mexa64` (x64 only).
 
 3. **MATLAB Online** and, correspondingly, **MATLAB Mobile**. By downloading Linux binary `mlMIEV0.mexa64` and uploading it to MATLAB Drive, one can call it with MATLAB Online services. Another option is to directly open this library in MATLAB Online through Mathworks File Exchange.
 
 4. One can try to build for another platform, where MATLAB is available. 
+
+## Usage
 
 In order to use the library, please download the binary file appropriate for your system. In the example below, we assume that current version for **Windows x64** is used.
 
