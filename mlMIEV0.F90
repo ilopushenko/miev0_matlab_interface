@@ -1,10 +1,10 @@
-!================================================================================
+!=================================================================================
 !  MATLAB interface to W. Wiscombe's MIEV0, by I. Lopushenko.
-!  Version 1.1, 6 September 2025. Calls modified, double-precision MIEV0.
-!  Compatibility: non-interleaved MATLAB MEX API.
+!  Version 1.2, 18 September 2025. Calls modified, double-precision MIEV0.
+!  Compatibility: interleaved MATLAB MEX API.
 !  Compile: mex mlMIEV0.f MIEV0.f ErrPack.f
-!  Verified build config (Win32): Visual Studio 2008 Pro, IFC 11.1, MATLAB R2011a
-!================================================================================
+!  Verified build config (Win32): VS2019, Intel oneAPI 2021 Fortran, MATLAB R2022a
+!=================================================================================
 !  MIT License
 !  Copyright (c) 2025 Ivan Lopushenko
 !  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,7 +22,7 @@
 !  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 !  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 !  SOFTWARE.
-!================================================================================
+!=================================================================================
 
 #include "fintrf.h"
 
@@ -33,18 +33,19 @@
       INTEGER nlhs, nrhs
       mwPointer plhs(*), prhs(*)
 
-!=== MATLAB Fortran classic MEX API functions
+!=== MATLAB Fortran MEX API functions
       REAL*8 mxGetScalar
-      mwPointer mxGetPr, mxGetPi, mxCreateDoubleMatrix, 
-     + mxCreateDoubleScalar, mxCreateNumericMatrix, 
+      mwPointer mxCreateDoubleMatrix, mxGetInt64s,
+     + mxCreateNumericMatrix, mxGetPr, 
      + mxClassIDFromClassName
       mwSize mxGetM, mxGetN, mxGetNumberOfElements
 
       EXTERNAL mxCopyPtrToReal8, mxCopyReal8ToPtr, 
-     + mxCopyPtrToInteger4
+     + mxCopyPtrToInteger8, mxCopyComplex16ToPtr,
+     + mxCopyPtrToComplex16
 
 !=== Local MATLAB data pointers
-      mwPointer pr, pi, prXMU
+      mwPointer pr, prXMU, mxGetDoubles, mxGetComplexDoubles
 
 !=== Inputs 
       REAL*8 XX, MIMCUT
@@ -80,19 +81,20 @@
 !  Transfer inputs from MATLAB to Fortran arrays
 !=================================================================
 
-      call mxCopyPtrToReal8(mxGetPr(prhs(1)),XX,1)
+      call mxCopyPtrToReal8(mxGetDoubles(prhs(1)),XX,1)
 
       size = mxGetM(prhs(2))*mxGetN(prhs(2))
-      call mxCopyPtrToComplex16(mxGetPr(prhs(2)),
-     +                          mxGetPi(prhs(2)),CREFIN,size)
+	  pr = mxGetComplexDoubles(prhs(2))
+      call mxCopyPtrToComplex16(pr,
+     +                          CREFIN,size)
 
       PERFCT = (mxGetScalar(prhs(3)) .ne. 0.d0)
       
-      call mxCopyPtrToReal8(mxGetPr(prhs(4)), MIMCUT, 1)
+      call mxCopyPtrToReal8(mxGetDoubles(prhs(4)), MIMCUT, 1)
 
       ANYANG = (mxGetScalar(prhs(5)) .ne. 0.d0)
 
-      call mxCopyPtrToInteger4(mxGetPr(prhs(6)),NUMANG,1)
+      call mxCopyPtrToInteger8(mxGetInt64s(prhs(6)),NUMANG,1)
 
       if (NUMANG .lt. 0) then
          call mexErrMsgTxt('NUMANG must be non-negative.')
@@ -100,8 +102,9 @@
       
       allocate(XMU(NUMANG+1))
       if (NUMANG .gt. 0) then
-         prXMU = mxGetPr(prhs(7))
-         if (prXMU .eq. 0) call mexErrMsgTxt('XMU must be real array.')
+         prXMU = mxGetDoubles(prhs(7))
+         if (prXMU .eq. 0) call mexErrMsgTxt('XMU must be real 
+     +                                                    array.')
          mrows = mxGetM(prhs(7))
          ncols = mxGetN(prhs(7))
          numel = mrows*ncols
@@ -111,9 +114,9 @@
          call mxCopyPtrToReal8(prXMU, XMU, numel)
       endif
 
-      call mxCopyPtrToInteger4(mxGetPr(prhs(8)),NMOM,1)
-      call mxCopyPtrToInteger4(mxGetPr(prhs(9)),IPOLZN,1)
-      call mxCopyPtrToInteger4(mxGetPr(prhs(10)),MOMDIM,1)
+      call mxCopyPtrToInteger8(mxGetInt64s(prhs(8)),NMOM,1)
+      call mxCopyPtrToInteger8(mxGetInt64s(prhs(9)),IPOLZN,1)
+      call mxCopyPtrToInteger8(mxGetInt64s(prhs(10)),MOMDIM,1)
 
       if (NMOM .lt. 0) then
          call mexErrMsgTxt('NMOM must be >= 0.')
@@ -199,65 +202,66 @@
 ! (1) QEXT
       plhs(1) = mxCreateNumericMatrix(1, 1,
      +          mxClassIDFromClassName('double'),0)
-      call mxCopyReal8ToPtr( QEXT, mxGetPr(plhs(1)), 1 )
+      call mxCopyReal8ToPtr( QEXT, mxGetDoubles(plhs(1)), 1 )
 
 ! (2) QSCA
       plhs(2) = mxCreateNumericMatrix(1, 1,
      +          mxClassIDFromClassName('double'),0)
-      call mxCopyReal8ToPtr( QSCA, mxGetPr(plhs(2)), 1 )
+      call mxCopyReal8ToPtr( QSCA, mxGetDoubles(plhs(2)), 1 )
 
 ! (3) GQSC
       plhs(3) = mxCreateNumericMatrix(1, 1,
      +          mxClassIDFromClassName('double'),0)
-      call mxCopyReal8ToPtr( GQSC, mxGetPr(plhs(3)), 1 )
+      call mxCopyReal8ToPtr( GQSC, mxGetDoubles(plhs(3)), 1 )
 
 ! (4) S1  COMPLEX*16 vector (NUMANG x 1)
       plhs(4) = mxCreateNumericMatrix(NUMANG, 1,
      +          mxClassIDFromClassName('double'),1)
-      call mxCopyComplex16ToPtr(S1,mxGetPr(plhs(4)),
-     +                             mxGetPi(plhs(4)), NUMANG)
+      call mxCopyComplex16ToPtr(S1,mxGetComplexDoubles(plhs(4)),
+     +                             NUMANG)
       
 
 ! (5) S2  COMPLEX*16 vector (NUMANG x 1)
       plhs(5) = mxCreateNumericMatrix(NUMANG, 1,
      +          mxClassIDFromClassName('double'),1)
-      call mxCopyComplex16ToPtr(S2,mxGetPr(plhs(5)),
-     +                             mxGetPi(plhs(5)), NUMANG)
+      call mxCopyComplex16ToPtr(S2,mxGetComplexDoubles(plhs(5)),
+     +                             NUMANG)
 
 ! (6) SFORW  COMPLEX*16 scalar
       plhs(6) = mxCreateNumericMatrix(1, 1,
      +          mxClassIDFromClassName('double'),1)
-      call mxCopyComplex16ToPtr(SFORW,mxGetPr(plhs(6)),
-     +                                mxGetPi(plhs(6)), 1)
+      call mxCopyComplex16ToPtr(SFORW,
+     +                          mxGetComplexDoubles(plhs(6)), 1)
 
 ! (7) SBACK  COMPLEX*16 scalar
       plhs(7) = mxCreateNumericMatrix(1, 1,
      +          mxClassIDFromClassName('double'),1)
-      call mxCopyComplex16ToPtr(SBACK,mxGetPr(plhs(7)),
-     +                                mxGetPi(plhs(7)), 1)
+      call mxCopyComplex16ToPtr(SBACK,
+     +                          mxGetComplexDoubles(plhs(7)), 1)
 
 ! (8) TFORW  COMPLEX*16 vector (2 x 1)
       plhs(8) = mxCreateNumericMatrix(2, 1,
      +          mxClassIDFromClassName('double'),1)
-      call mxCopyComplex16ToPtr(TFORW,mxGetPr(plhs(8)),
-     +                                mxGetPi(plhs(8)), 2)
+      call mxCopyComplex16ToPtr(TFORW,
+     +                          mxGetComplexDoubles(plhs(8)), 2)
 
 ! (9) TBACK COMPLEX*16 vector (2 x 1)
       plhs(9) = mxCreateNumericMatrix(2, 1,
      +          mxClassIDFromClassName('double'),1)
-      call mxCopyComplex16ToPtr(TBACK,mxGetPr(plhs(9)),
-     +                                mxGetPi(plhs(9)), 2)
+      call mxCopyComplex16ToPtr(TBACK,
+     +                          mxGetComplexDoubles(plhs(9)), 2)
 
 ! (10) SPIKE
       plhs(10) = mxCreateNumericMatrix(1, 1,
      +          mxClassIDFromClassName('double'),0)
-      call mxCopyReal8ToPtr( SPIKE, mxGetPr(plhs(10)), 1 )
+      call mxCopyReal8ToPtr( SPIKE, mxGetDoubles(plhs(10)), 1 )
 
       
 ! (11) PMOM  (MOMDIM+1 x N)
       plhs(11) = mxCreateNumericMatrix(MOMDIM+1, N,
      +           mxClassIDFromClassName('double'), 0)
-      call mxCopyReal8ToPtr( PMOM, mxGetPr(plhs(11)), N*(MOMDIM+1) )
+      call mxCopyReal8ToPtr( PMOM, mxGetDoubles(plhs(11)),
+     +                       N*(MOMDIM+1) )
       
 
 !=================================================================

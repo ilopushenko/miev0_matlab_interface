@@ -34,18 +34,18 @@ angulargrid = linspace(-180,180,361*2)+90;
 
 % Configure input for MIEV0 subroutine
 IN            = struct;
-IN(1).XX      = 20;
-IN(1).Crefin  = 1.33 + 0.0i;
-IN(1).Perfct  = false;
-IN(1).Mimcut  = 1e-12;
-IN(1).Anyang  = false;
-IN(1).Xmu     = cosd(angulargrid);
-IN(1).Numang  = int32(numel(IN(1).Xmu));
-IN(1).Nmom    = int32(0);
-IN(1).Ipolzn  = int32(0);         % => NQ = 1
-IN(1).Momdim  = int32(5);         % >= Nmom
-IN(1).Prnt    = false;
-IN(1).Verbose = false;
+IN(1).XX      = 20;                      % size parameter
+IN(1).Crefin  = complex(1.33 + 0.0i);    % refractive index (imaginary part can be + or -, but internally a negative imaginary index is assumed)
+IN(1).Perfct  = false;                   % perfectly conducting sphere or not
+IN(1).Mimcut  = 1e-12;                   % (positive) value below which imaginary refractive index is regarded as zero
+IN(1).Anyang  = false;                   % true <=> any angles whatsoever may be input through Xmu. false <=> the angles are monotone increasing and mirror symmetric about 90 degrees
+IN(1).Xmu     = cosd(angulargrid);       % cosines of angles at which S1, S2 are to be evaluated
+IN(1).Numang  = int64(numel(IN(1).Xmu)); % number of angles
+IN(1).Nmom    = int64(0);                % highest Legendre moment PMOM to calculate, 0 if PMOM are not to be computed
+IN(1).Ipolzn  = int64(0);                % how to compute PMOM (see details in /wiscombe/MIEV.pdf)        
+IN(1).Momdim  = int64(5);                % determines first dimension of PMOM. Must be given a value, even if NMOM = 0. Minimum: 1.   
+IN(1).Prnt    = false;                   % print flags (useless in MATLAB implementation at this moment)
+IN(1).Verbose = true;                    % print flags for verbose output from mlMIEV0 MEX interface (sometimes useful for debugging without VS)
 
 % Call mlMIEV0 interface and write results into RES structure
 RES = struct;
