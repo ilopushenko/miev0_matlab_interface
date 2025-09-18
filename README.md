@@ -29,13 +29,13 @@ Potentially, MEX library can also be compiled from the sources on other platform
 At the moment, library is available as binary MEX file for several platforms. 
 
 1. **Windows**. For Windows platform, two releases are available:
-   * (Legacy) Version 1.1. Built with non-interleaved MATLAB MEX API. Supports **MATLAB R2011a** and all subsequent releases. Binary files: `mlMIEV0.mexw32` (x86) and `mlMIEV0.mexw64` (x64).
-   * (Current) Version 1.2. Built with interleaved MATLAB MEX API. Supports **MATLAB R2022a** and all subsequent releases. Binary file: `mlMIEV0.mexw64` (x64 only).
+   * (Legacy) Version 1.1. Built with non-interleaved MATLAB MEX API. Supports **MATLAB R2011a** and all subsequent releases. Binary files: [`mlMIEV0.mexw32`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.0/mlMIEV0.mexw32) (x86) and [`mlMIEV0.mexw64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.0/mlMIEV0.mexw64) (x64). Also, see [example MATLAB script](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.0/example_scattered_intensities.m).
+   * (Current) Version 1.2. Built with interleaved MATLAB MEX API. Supports **MATLAB R2022a** and all subsequent releases. Binary file: [`mlMIEV0.mexw64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexw64) (x64 only). Important: different [example script](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/example_scattered_intensities.m) is applicable.
 Both releases are identical in terms of the produced results, so it is up to you to decide which version to use. If you have older MATLAB, go on with the legacy version, if you have newer MATLAB - I would advice to use the current version.  
 > [!IMPORTANT]
-> There are some differences in the definition of input integer parameters between these two versions. Please, pay attention to the end of next section.
+> There are some differences in the definition of input integer parameters between these two versions. Please, pay attention to the differences in the example scripts, explained at the end of next section.
    
-2. **Linux**. Current version 1.2, built with interleaved API. Supports **MATLAB R2023b** and all subsequent releases. Binary file: `mlMIEV0.mexa64` (x64 only).
+2. **Linux**. Current version 1.2, built with interleaved API. Supports **MATLAB R2023b** and all subsequent releases. Binary file: [`mlMIEV0.mexa64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexa64) (x64 only). Corresponding [example script](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/example_scattered_intensities.m).
 
 3. **MATLAB Online** and, correspondingly, **MATLAB Mobile**. By downloading Linux binary `mlMIEV0.mexa64` and uploading it to MATLAB Drive, one can call it with MATLAB Online services. Another option is to directly open this library in MATLAB Online through Mathworks File Exchange.
 
