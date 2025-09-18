@@ -79,9 +79,7 @@ You are very welcome to report any issues if you encounter any.
 ### Current build directions (interleaved MEX API)
 Ideally, one should be able to build current version of the library with any MATLAB edition. However, there are some platform-specific advices.
 
-**Windows build instructions**:
-
-Prerequisites (verified): Visual Studio 2019 Community Edition + Intel oneAPI 2021 HPC with Fortran Compiler + MATLAB R2022a. Should work with any combination of Visual Studio, Intel oneAPI and MATLAB product releases, as soon as your specific releases are compatible with each other. List of [MATLAB supported compilers](https://www.mathworks.com/support/requirements/previous-releases.html) can be a starting guide point.
+**Windows build instructions**: Prerequisites (verified): Visual Studio 2019 Community Edition + Intel oneAPI 2021 HPC with Fortran Compiler + MATLAB R2022a. Should work with any combination of Visual Studio, Intel oneAPI and MATLAB product releases, as soon as your specific releases are compatible with each other. List of [MATLAB supported compilers](https://www.mathworks.com/support/requirements/previous-releases.html) can be a starting guide point.
 
 1. Install Visual Studio first.
 2. Install Intel oneAPI, and its HPC additional installer containing Fortran compiler. 
