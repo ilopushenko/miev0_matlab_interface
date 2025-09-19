@@ -37,7 +37,7 @@ At the moment, library is available as binary MEX file for several platforms.
    * Binary file (x64 platform): [`mlMIEV0.mexa64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexa64);
    * Corresponding [example script](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/example_scattered_intensities.m) (the same as for Windows).
 
-3. **MATLAB Online** and, correspondingly, **MATLAB Mobile**. By downloading Linux binary `mlMIEV0.mexa64` and uploading it to MATLAB Drive, one can call it with MATLAB Online services. Another option is to directly open this library in MATLAB Online through Mathworks File Exchange.
+3. **MATLAB Online** and, correspondingly, **MATLAB Mobile**. By downloading Linux binary `mlMIEV0.mexa64` and uploading it to MATLAB Drive, one can call it with MATLAB Online services. Another option is to [directly open this library in MATLAB Online](https://matlab.mathworks.com/open/fileexchange/v1?id=181979&file=example_scattered_intensities.m) through [Mathworks Community File Exchange](https://se.mathworks.com/matlabcentral/fileexchange/181979-matlab-interface-to-w-wiscombe-s-mie-scattering-program).
 
 4. One can try to build for another platform, where MATLAB is available. 
 
