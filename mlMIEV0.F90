@@ -35,13 +35,13 @@
 
 !=== MATLAB Fortran MEX API functions
       REAL*8 mxGetScalar
-      mwPointer mxCreateDoubleMatrix, mxGetInt64s,
+      mwPointer mxCreateDoubleMatrix, mxGetInt32s,
      + mxCreateNumericMatrix, mxGetPr, 
      + mxClassIDFromClassName
       mwSize mxGetM, mxGetN, mxGetNumberOfElements
 
       EXTERNAL mxCopyPtrToReal8, mxCopyReal8ToPtr, 
-     + mxCopyPtrToInteger8, mxCopyComplex16ToPtr,
+     + mxCopyPtrToInteger4, mxCopyComplex16ToPtr,
      + mxCopyPtrToComplex16
 
 !=== Local MATLAB data pointers
@@ -53,6 +53,7 @@
       LOGICAL PERFCT, ANYANG
       LOGICAL PRNT(2), ISVERBOSE
       INTEGER NUMANG, NMOM, IPOLZN, MOMDIM
+	  INTEGER*4 TMPINT
       REAL*8, allocatable :: XMU(:)
 
 !=== Outputs (Fortran side)
@@ -94,7 +95,8 @@
 
       ANYANG = (mxGetScalar(prhs(5)) .ne. 0.d0)
 
-      call mxCopyPtrToInteger8(mxGetInt64s(prhs(6)),NUMANG,1)
+      call mxCopyPtrToInteger4(mxGetInt32s(prhs(6)),TMPINT,1)
+	  NUMANG = int(TMPINT,KIND(NUMANG))
 
       if (NUMANG .lt. 0) then
          call mexErrMsgTxt('NUMANG must be non-negative.')
@@ -114,9 +116,12 @@
          call mxCopyPtrToReal8(prXMU, XMU, numel)
       endif
 
-      call mxCopyPtrToInteger8(mxGetInt64s(prhs(8)),NMOM,1)
-      call mxCopyPtrToInteger8(mxGetInt64s(prhs(9)),IPOLZN,1)
-      call mxCopyPtrToInteger8(mxGetInt64s(prhs(10)),MOMDIM,1)
+      call mxCopyPtrToInteger4(mxGetInt32s(prhs(8)),TMPINT,1)
+	  NMOM = int(TMPINT,KIND(NMOM))
+      call mxCopyPtrToInteger4(mxGetInt32s(prhs(9)),TMPINT,1)
+	  IPOLZN = int(TMPINT,KIND(IPOLZN))
+      call mxCopyPtrToInteger4(mxGetInt32s(prhs(10)),TMPINT,1)
+	  MOMDIM = int(TMPINT,KIND(MOMDIM))
 
       if (NMOM .lt. 0) then
          call mexErrMsgTxt('NMOM must be >= 0.')
@@ -231,7 +236,7 @@
       plhs(6) = mxCreateNumericMatrix(1, 1,
      +          mxClassIDFromClassName('double'),1)
       call mxCopyComplex16ToPtr(SFORW,
-     +                          mxGetComplexDoubles(plhs(6)), 1)
+     +                          mxGetComplexDoubles(plhs(6)), 1 )
 
 ! (7) SBACK  COMPLEX*16 scalar
       plhs(7) = mxCreateNumericMatrix(1, 1,
