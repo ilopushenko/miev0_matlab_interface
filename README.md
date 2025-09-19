@@ -29,8 +29,8 @@ Potentially, MEX library can also be compiled from the sources on other platform
 At the moment, library is available as binary MEX file for several platforms. 
 
 1. **Windows**. Built with non-interleaved MATLAB MEX API. Supports **MATLAB R2011a** and all subsequent releases. Binary files: 
-   * Modern Windows PC (x64 platform): [`mlMIEV0.mexw64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexw64) (x64);
-   * Legacy Windows PC (x86 platform): [`mlMIEV0.mexw32`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexw32) (x86);
+   * Modern Windows PC (x64 platform): [`mlMIEV0.mexw64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexw64);
+   * Legacy Windows PC (x86 platform): [`mlMIEV0.mexw32`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexw32);
    * Also, see example MATLAB script: [`example_scattered_intensities.m`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/example_scattered_intensities.m).
 
 2. **Linux**. Built with interleaved MATLAB MEX API. Supports **MATLAB R2023b** and all subsequent releases. Release files:
