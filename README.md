@@ -120,7 +120,7 @@ Prerequisites: nAG Fortran Compiler 7.2 + MATLAB R2023b.
 1. Install MATLAB and nagfor in any order. 
 2. Make sure that nagfor can be called from MATLAB Command Window. For this you will most likely have to redefine the NAGFOR_ROOT environment variable by executing the following in the MATLAB Command Window: `setenv("NAGFOR_ROOT","/usr/local")`, where `/usr/local` should be replaced with the root folder of your nAG distro. This root folder should, in turn, contain the `bin` folder with `nagfor` binary.
 3. Configure MATLAB to use nagfor by executing `mex -setup Fortran` in MATLAB Command Window.
-4. Build the library by calling `mex -R2018a mlMIEV0.F90 MIEV0.f ErrPack.f`. 
+4. Build the library by calling `mex -R2018a FFLAGS='$FFLAGS -fixed -mismatch -kind=byte' mlMIEV0.F90 MIEV0.f ErrPack.f`. 
 
 ### Legacy build directions (non-interleaved MEX API)
 This version, located in `/legacy/double_precision`, faces some build-related difficulties in recent MATLAB editions. For this reason, MEX file has to be built with older frameworks. As already mentioned, advantage of this approach is compatibility of the produced MEX file with any subsequent MATLAB release (at least, Mathworks still maintain proper binary support). Below the build procedure is discussed on the example of MATLAB R2011a, as this appeared to be the earliest version for which I already had compatible compilers. 
