@@ -30,11 +30,11 @@ At the moment, library is available as binary MEX file for several platforms.
 
 1. **Windows**. Built with non-interleaved MATLAB MEX API. Supports **MATLAB R2011a** and all subsequent releases. Binary files: 
    * Modern Windows PC (x64 platform): [`mlMIEV0.mexw64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexw64) (x64);
-   * Legacy Windows PC (x86 platform): [`mlMIEV0.mexw32`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexw32) (x86).
+   * Legacy Windows PC (x86 platform): [`mlMIEV0.mexw32`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexw32) (x86);
    * Also, see example MATLAB script: [`example_scattered_intensities.m`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/example_scattered_intensities.m).
 
 2. **Linux**. Built with interleaved MATLAB MEX API. Supports **MATLAB R2023b** and all subsequent releases. Release files:
-   * Binary file (x64 platform): [`mlMIEV0.mexa64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexa64).
+   * Binary file (x64 platform): [`mlMIEV0.mexa64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexa64);
    * Corresponding [example script](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/example_scattered_intensities.m) (the same as for Windows).
 
 3. **MATLAB Online** and, correspondingly, **MATLAB Mobile**. By downloading Linux binary `mlMIEV0.mexa64` and uploading it to MATLAB Drive, one can call it with MATLAB Online services. Another option is to directly open this library in MATLAB Online through Mathworks File Exchange.
@@ -76,7 +76,8 @@ An example file for computing and plotting scattering intensities $S_1$ and $S_2
 > [!WARNING]
 > Please, pay attention to the following facts: 
 > 1. Expression like `complex(1.33+0.0i)` always has to be used to define refractive index, even when imaginary part is zero! This is because Fortran expects parameter of the specific type (COMPLEX*16) as an input.
-> 2. Similarly, all integers in MATLAB have to be explicitly specified as `int32`, e.g. `Momdim = int32(5);`. 
+> 2. Similarly, all integers in MATLAB have to be explicitly specified as `int32`, e.g. `Momdim = int32(5)`. 
+> 
 > Inappropriate input definition will either crash your MATLAB instance, or lead to incorrect produced results!
 > Example file `example_scattered_intensities.m`, bundled with each release, appropriately depicts all these differences.
 
