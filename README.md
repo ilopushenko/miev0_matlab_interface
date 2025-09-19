@@ -28,15 +28,14 @@ Potentially, MEX library can also be compiled from the sources on other platform
 ## Availability
 At the moment, library is available as binary MEX file for several platforms. 
 
-1. **Windows**. For Windows platform, two releases are available:
-   * (Legacy) Version 1.1. Built with non-interleaved MATLAB MEX API. Supports **MATLAB R2011a** and all subsequent releases. Binary files: [`mlMIEV0.mexw32`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.0/mlMIEV0.mexw32) (x86) and [`mlMIEV0.mexw64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.0/mlMIEV0.mexw64) (x64). Also, see [example MATLAB script](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.0/example_scattered_intensities.m).
-   * (Current) Version 1.2. Built with interleaved MATLAB MEX API. Supports **MATLAB R2022a** and all subsequent releases. Binary file: [`mlMIEV0.mexw64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexw64) (x64 only). **Important:** different [example script](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/example_scattered_intensities.m) is applicable.
+1. **Windows**. Built with non-interleaved MATLAB MEX API. Supports **MATLAB R2011a** and all subsequent releases. Binary files: 
+   * Modern Windows PC (x64 platform): [`mlMIEV0.mexw64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexw64) (x64);
+   * Legacy Windows PC (x86 platform): [`mlMIEV0.mexw32`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexw32) (x86).
+   * Also, see example MATLAB script: [`example_scattered_intensities.m`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/example_scattered_intensities.m).
 
-Both releases are identical in terms of the produced results, so it is up to you to decide which version to use. If you have older MATLAB, go on with the legacy version, if you have newer MATLAB - I would advice to use the current version.  
-> [!IMPORTANT]
-> There are some differences in the definition of input integer parameters between these two versions. Please, pay attention to the corresponding example scripts, as well as to explanations provided at the end of next section.
-   
-2. **Linux**. Current version 1.2, built with interleaved API. Supports **MATLAB R2023b** and all subsequent releases. Binary file: [`mlMIEV0.mexa64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexa64) (x64 only). Corresponding [example script](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/example_scattered_intensities.m).
+2. **Linux**. Built with interleaved MATLAB MEX API. Supports **MATLAB R2023b** and all subsequent releases. Release files:
+   * Binary file (x64 platform): [`mlMIEV0.mexa64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexa64).
+   * Corresponding [example script](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/example_scattered_intensities.m) (the same as for Windows).
 
 3. **MATLAB Online** and, correspondingly, **MATLAB Mobile**. By downloading Linux binary `mlMIEV0.mexa64` and uploading it to MATLAB Drive, one can call it with MATLAB Online services. Another option is to directly open this library in MATLAB Online through Mathworks File Exchange.
 
@@ -44,10 +43,26 @@ Both releases are identical in terms of the produced results, so it is up to you
 
 ## Usage
 
-In order to use the library, please download the binary file appropriate for your system. In the example below, we assume that current version for **Windows x64** is used.
+In order to use the library, please download the binary file appropriate for your system. In the example below, we assume that version for **Windows x64** is used.
 
 1. Download ```mlMIEV0.mexw64``` from the [Releases](https://github.com/ilopushenko/miev0_matlab_interface/releases) section and put it into your project folder.
-2. Call mlMIEV0 as you would call any MATLAB function with appropriate input and output argument list:
+2. Create a MATLAB script, in which input parameters will be defined. For example:
+```
+XX       = 20;                             % size parameter;
+Crefin   = complex(1.33+0.0i);             % refractive index (imaginary part can be + or -, but internally a negative imaginary index is assumed)
+Perfct   = false;                          % perfectly conducting sphere or not
+Mimcut   = 1e-12;                          % (positive) value below which imaginary refractive index is regarded as zero
+Anyang   = false;                          % true <=> any angles whatsoever may be input through Xmu. false <=> the angles are monotone increasing and mirror symmetric about 90 degrees
+angles   = linspace(-180,180,361) + 90;    % array of angles for diagram computation
+Xmu      = cosd(angles);                   % cosines of angles at which S1, S2 are to be evaluated
+Numang   = int32(numel(Xmu));              % number of angles
+Nmom     = int32(0);                       % highest Legendre moment PMOM to calculate, 0 if PMOM are not to be computed
+Ipolzn   = int32(0);                       % how to compute PMOM (see details in /wiscombe/MIEV.pdf)
+Momdim   = int32(5);                       % determines first dimension of PMOM. Must be given a value, even if NMOM = 0. Minimum: 1.
+Prnt     = false;                          % print flags (useless in MATLAB implementation at this moment)
+Verbose  = true;                           % print flags for debugging mlMIEV0 MEX interface
+```
+3. Call mlMIEV0 as you would call any MATLAB function with appropriate input and output argument list:
 ```
 [Qext, Qsca, Gqsc, S1, S2, Sforw, Sback, Tforw, Tback, Spike, PMOM] = ...
 mlMIEV0(XX, Crefin, Perfct, Mimcut, Anyang, Numang, Xmu, Nmom, Ipolzn, Momdim, Prnt, Verbose);
@@ -59,8 +74,10 @@ An example file for computing and plotting scattering intensities $S_1$ and $S_2
 ![result of the example script](./example_scattered_intensities.svg)
 
 > [!WARNING]
-> Please, pay attention to the fact that in version 1.2 (current) integers are treated as int64, whereas in versions 1.1 and 1.0 (legacy) integers are treated as int32. 
-> It means that all integer input variables for version 1.2 in MATLAB have to be defined as e.g. `Momdim = int64(5);`, whereas for versions 1.1 and 1.0 they are to be defined as `Momdim = int32(5);`. Inappropriate definition will most likely crash your MATLAB instance!
+> Please, pay attention to the following facts: 
+> 1. Expression like `complex(1.33+0.0i)` always has to be used to define refractive index, even when imaginary part is zero! This is because Fortran expects parameter of the specific type (COMPLEX*16) as an input.
+> 2. Similarly, all integers in MATLAB have to be explicitly specified as `int32`, e.g. `Momdim = int32(5);`. 
+> Inappropriate input definition will either crash your MATLAB instance, or lead to incorrect produced results!
 > Example file `example_scattered_intensities.m`, bundled with each release, appropriately depicts all these differences.
 
 ## Validation
@@ -86,7 +103,7 @@ Ideally, one should be able to build current version of the library with any MAT
 2. Install Intel oneAPI, and its HPC additional installer containing Fortran compiler. 
 3. Install MATLAB (if you already had MATLAB prior to installing other tools, do not reinstall it, it will see the other distros).
 4. Configure MATLAB to use Intel oneAPI Fortran Compiler by executing `mex -setup Fortran` in MATLAB Command Window.
-5. Build the library by calling `mex -R2018a mlMIEV0.F90 MIEV0.f ErrPack.f`. Flag `-R2018a` ensures that interleaved MEX API is used.
+5. Build the library by calling `mex -R2018a mlMIEV0.F90 MIEV0.f ErrPack.f`. Flag `-R2018a` ensures that interleaved MEX API is used. Produced file is usually compatible with all versions of MATLAB starting with the one in which it is built.
 
 **Linux build directions**:
 Prerequisites (verified): Ubuntu 22.04 LTS + GNU gfortran-10 + MATLAB R2023b. Again, build should work with any supported combination of MATLAB and gfortran releases. 
