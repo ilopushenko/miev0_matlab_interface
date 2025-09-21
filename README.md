@@ -17,12 +17,7 @@ All capabilities of the original MIEV0 program are retained. The following quant
 More details on input parameters and output quantities are available in the original manual file authored by W. Wiscombe (```/wiscombe/MIEV.doc``` or converted version ```/wiscombe/MIEV.pdf```), as well as in comments within source code ```MIEV0.f```.
 Very thorough description can be found in NCAR reports (```/wiscombe/NCARMieReport_Jun79.pdf``` and ```/wiscombe/NCARMieReport_Aug96.pdf```). One is also urged to refer to the original papers enumerated below.
 
-I have made minor modifications to ```MIEV0.f``` and ```ErrPack.f``` source code files, mainly to enable support of double precision arithmetic and to ensure that MIEV0 error messages are properly displayed in MATLAB command window instead of crashing the whole thing. These changes are mainly reflected in changing data types from REAL and COMPLEX to REAL\*8 and COMPLEX\*16, correspondingly. Perhaps there was a more elegant way to do it, e.g. by using certain ifort compiler flags, but somehow attempting to do so in the MATLAB Command window has not been successful. As of now, even line numbering in MIEV0.f is completely the same as in the original file. Original files are kept for reference in the ```/wiscombe/``` folder. In addition, interface binaries based on the unmodified MIEV0.f are available in the ```/legacy/``` folder, built with the default single precision arithmetic. 
-
-This interface has been intentionally implemented with a bit outdated non-interleaved MATLAB MEX API in order to ensure compatibility with older MATLAB releases.
-Consequently, calls to the ```mlMIEV0.mexw64``` library are supported in all Windows MATLAB releases beginning with R2011a without imposing requirements for any additional software. 
-
-Potentially, MEX library can also be compiled from the sources on other platforms (see general instructions below). Currently, I consider building binary files for Linux and Apple Silicon platrorms. Octave port might also be considered at a later time.
+I have made minor modifications to ```MIEV0.f``` and ```ErrPack.f``` source code files, mainly to enable support of double precision arithmetic and to ensure that MIEV0 error messages are properly displayed in MATLAB command window instead of crashing the whole thing. These changes are mainly reflected in changing data types from REAL and COMPLEX to REAL\*8 and COMPLEX\*16, correspondingly. Perhaps there was a more elegant way to do it, e.g. by using certain ifort compiler flags, but somehow attempting to do so in the MATLAB Command window has not been successful. As of now, even line numbering in MIEV0.f is completely the same as in the original file. Original files are kept for reference in the ```/wiscombe/``` folder. In addition, interface binaries based on the unmodified MIEV0.f are available in the ```/legacy/single-precision``` folder, built with the default single precision arithmetic. 
 
 
 ## Availability
@@ -37,9 +32,13 @@ At the moment, library is available as binary MEX file for several platforms.
    * Binary file (x64 platform): [`mlMIEV0.mexa64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexa64);
    * Corresponding [example script](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/example_scattered_intensities.m) (the same as for Windows).
 
-3. **MATLAB Online** and, correspondingly, **MATLAB Mobile**. By downloading Linux binary `mlMIEV0.mexa64` and uploading it to MATLAB Drive, one can call it with MATLAB Online services. Another option is to [directly open this library in MATLAB Online](https://matlab.mathworks.com/open/fileexchange/v1?id=181979&file=example_scattered_intensities.m) through [Mathworks Community File Exchange](https://se.mathworks.com/matlabcentral/fileexchange/181979-matlab-interface-to-w-wiscombe-s-mie-scattering-program).
+3. **Apple Silicon**. Built with interleaved MATLAB MEX API. Supports **MATLAB R2023b** and all subsequent releases. Release files:
+   * Binary file: [`mlMIEV0.mexmaca64`](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/mlMIEV0.mexmaca64);
+   * Corresponding [example script](https://github.com/ilopushenko/miev0_matlab_interface/releases/download/v1.2/example_scattered_intensities.m) (the same as for Windows).
+ 
+4. **MATLAB Online** and, correspondingly, **MATLAB Mobile**. By downloading Linux binary `mlMIEV0.mexa64` and uploading it to MATLAB Drive, one can call it with MATLAB Online services. Another option is to [directly open this library in MATLAB Online](https://matlab.mathworks.com/open/fileexchange/v1?id=181979&file=example_scattered_intensities.m) through [Mathworks Community File Exchange](https://se.mathworks.com/matlabcentral/fileexchange/181979-matlab-interface-to-w-wiscombe-s-mie-scattering-program).
 
-4. One can try to build for another platform, where MATLAB is available. 
+5. One can try to build for another platform, where MATLAB is available. 
 
 ## Usage
 
